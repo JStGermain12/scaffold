@@ -45,7 +45,7 @@ jobs:
         run: make test
         shell: pwsh
 
-      # Format code with python black
+      # Format code with python black yes
       - name: Format code with python black
         run: make format
         shell: pwsh
