@@ -1,4 +1,4 @@
-name: Python app with Github actions
+name: Python app with GitHub actions
 
 # Controls when the workflow will run
 on:
@@ -11,21 +11,18 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    
+
     steps:
       # Checkout the repository (it will be checked out to the default directory)
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Move to the correct directory (where your `Makefile` is located)
+      # Move to the correct directory (the repository will be under the default workspace path)
       - name: Change to Correct Directory
         run: |
-          cd C:\Users\Administrator\scaffold
-        shell: pwsh
-
-      # Print the current directory to verify it
-      - name: Print Current Directory
-        run: pwd
+          cd ${{ github.workspace }}
+          # Confirm the current directory
+          pwd
         shell: pwsh
 
       # List files in the current directory to confirm correct files are there
