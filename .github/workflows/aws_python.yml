@@ -31,7 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          make install
+          make -f C:\Users\Administrator\scaffold install
 
       - name: lint with pylint
         run: |
