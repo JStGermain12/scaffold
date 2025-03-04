@@ -18,12 +18,12 @@ jobs:
         uses: actions/checkout@v4
 
       # Move to the correct directory (the repository will be under the default workspace path)
-      #- name: Change to Correct Directory
-       # run: |
-        #  cd ${{ github.workspace }}
+      - name: Change to Correct Directory
+        run: |
+          cd ${{ github.workspace }}
           # Confirm the current directory
-        #  Get-Location
-      #  shell: pwsh
+          Get-Location
+        shell: pwsh
 
       # List files in the current directory to confirm correct files are there
       - name: List Files
