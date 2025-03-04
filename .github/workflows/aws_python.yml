@@ -33,8 +33,7 @@ jobs:
         shell: pwsh
       - name: Install dependencies
         run: |
-          make -f C:\Users\Administrator\scaffold install
-
+          make install
       - name: lint with pylint
         run: |
           make lint
