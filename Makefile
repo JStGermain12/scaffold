@@ -1,7 +1,6 @@
 install:
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt	
-
 lint: install
     black .
     isort --check-only .
