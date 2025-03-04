@@ -1,4 +1,4 @@
-name: Python app with GitHub actions
+name: Python app with GitHub actions  1
 
 # Controls when the workflow will run
 on:
