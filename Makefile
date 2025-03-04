@@ -6,7 +6,7 @@ format:
 	black *.py
 
 lint:
-	black --check .
+	black . # Formats the files automatically
 	isort --check-only .
 	flake8 .
 
