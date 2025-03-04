@@ -12,17 +12,16 @@ jobs:
   build:
     runs-on: windows-latest
     
-    # Ensure the default working directory is set correctly
-    defaults:
-      run:
-        working-directory: C:\Users\Administrator\scaffold
-
     steps:
-      # Checkout repository into the correct directory
-      - name: Checkout repository to correct directory
+      # Checkout the repository (it will be checked out to the default directory)
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          path: C:\Users\Administrator\scaffold
+
+      # Move to the correct directory (where your `Makefile` is located)
+      - name: Change to Correct Directory
+        run: |
+          cd C:\Users\Administrator\scaffold
+        shell: pwsh
 
       # Print the current directory to verify it
       - name: Print Current Directory
