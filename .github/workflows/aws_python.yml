@@ -1,47 +1,55 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Python app with Github actions
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: windows-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+    
+    # Ensure the default working directory is set correctly
+    defaults:
+      run:
+        working-directory: C:\Users\Administrator\scaffold
 
-      - name: Install Latest Python
-        uses: actions/setup-python@v4
+    steps:
+      # Checkout repository into the correct directory
+      - name: Checkout repository to correct directory
+        uses: actions/checkout@v4
         with:
-          python-version: '3.x'
+          path: C:\Users\Administrator\scaffold
+
+      # Print the current directory to verify it
       - name: Print Current Directory
         run: pwd
         shell: pwsh
+
+      # List files in the current directory to confirm correct files are there
+      - name: List Files
+        run: ls -l
+        shell: pwsh
+
+      # Install dependencies using the Makefile
       - name: Install dependencies
-        run: |
-          make install
-      - name: lint with pylint
-        run: |
-          make lint
+        run: make install
+        shell: pwsh
 
-      - name: test with pytest
-        run: |
-          make test
+      # Run linting with pylint
+      - name: Lint with pylint
+        run: make lint
+        shell: pwsh
 
-      - name: format code with python black
-        run: |
-          make format
+      # Run tests with pytest
+      - name: Test with pytest
+        run: make test
+        shell: pwsh
+
+      # Format code with python black
+      - name: Format code with python black
+        run: make format
+        shell: pwsh
