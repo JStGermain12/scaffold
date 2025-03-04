@@ -1,0 +1,51 @@
+name: Python app with GitHub actions
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      # Checkout the repository (it will be checked out to the default directory)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Move to the correct directory (the repository will be under the default workspace path)
+      #- name: Change to Correct Directory
+       # run: |
+        #  cd ${{ github.workspace }}
+          # Confirm the current directory
+        #  Get-Location
+      #  shell: pwsh
+
+      # List files in the current directory to confirm correct files are there
+      - name: List Files
+        run: Get-ChildItem -Recurse
+        shell: pwsh
+
+      # Install dependencies using the Makefile
+      - name: Install dependencies
+        run: make install
+        shell: pwsh
+
+      # Run linting with pylint
+      - name: Lint with pylint
+        run: make lint
+        shell: pwsh
+
+      # Run tests with pytest
+      - name: Test with pytest
+        run: make test
+        shell: pwsh
+
+      # Format code with python black
+      - name: Format code with python black
+        run: make format
+        shell: pwsh

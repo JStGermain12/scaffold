@@ -1,0 +1,4 @@
+- name: Checkout repository to correct directory
+  uses: actions/checkout@v4
+  with:
+    path: C:\Users\Administrator\scaffold
