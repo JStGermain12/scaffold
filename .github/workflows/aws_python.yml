@@ -22,12 +22,12 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           # Confirm the current directory
-          pwd
+          Get-Location
         shell: pwsh
 
       # List files in the current directory to confirm correct files are there
       - name: List Files
-        run: ls -l
+        run: Get-ChildItem -Recurse
         shell: pwsh
 
       # Install dependencies using the Makefile
